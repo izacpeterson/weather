@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./app.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="bg-gray-900 text-white p-4 text-4xl drop-shadow">
+      <h1>Weather</h1>
+    </header>
+    <main class="flex">
+      <div class="drop-shadow m-2 bg-gray-100 rounded overflow-hidden">
+        <h2 class="font-bold bg-red-800 text-white py-1 px-2">Current Weather</h2>
+        <div class="p-2">
+          <div class="flex">
+            <h3>Temp:&#160;</h3>
+            <span id="currentTemp"></span>
+            <span>&deg;</span>
+          </div>
+          <div class="flex">
+            <h3>Humidity:&#160;</h3>
+            <span id="currentHumidity"></span>
+            <span>%</span>
+          </div>
+          <div class="flex">
+            <h3>Pressue:&#160;</h3>
+            <span id="currentPressure"></span>
+            <span>mBar</span>
+          </div>
+          <div class="flex">
+            <h3>Wind speed:&#160;</h3>
+            <span id="currentWindSpeed"></span>
+            <span>mph @</span>
+            <span id="currentWindDeg"></span>
+            <span>&deg;</span>
+          </div>
+          <div class="flex">
+            <h3>Cloud Cover:&#160;</h3>
+            <span id="currentClouds"></span>
+            <span>%</span>
+          </div>
+          <div class="flex">
+            <h3>Sunrise:&#160;</h3>
+            <span id="currentSunrise"></span>
+          </div>
+          <div class="flex">
+            <h3>Sunset:&#160;</h3>
+            <span id="currentSunset"></span>
+          </div>
+          <div class="flex">
+            <h3>Visibility:&#160;</h3>
+            <span id="currentVisibility"></span>
+            <span>km</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
