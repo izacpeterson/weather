@@ -25,6 +25,14 @@ async function getCurrentWeather(lat, lon, callback) {
   console.log(response.data);
   callback(response.data);
 }
+async function getHourlyWeather(lat, lon, callback) {
+  let url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&exclude=current,minutely,daily,alerts&units=imperial`;
+  let response = await axios.get(url);
+  fs.writeFileSync("./hourly.json", JSON.stringify(response.data));
+
+  console.log(response.data);
+  callback(response.data);
+}
 
 // getWeather({ lat: lat, lon: lon });
 
@@ -33,10 +41,19 @@ app.get("/api/current", (req, res) => {
     res.send(data.current);
   });
 });
+app.get("/api/hourly", (req, res) => {
+  getHourlyWeather(req.query.lat, req.query.lon, (data) => {
+    res.send(data.hourly);
+  });
+});
 
 app.get("/test/current", (req, res) => {
   const data = fs.readFileSync("./data.json");
   res.send(JSON.parse(data).current);
+});
+app.get("/test/hourly", (req, res) => {
+  const data = fs.readFileSync("./hourly.json");
+  res.send(JSON.parse(data).hourly);
 });
 
 app.listen(8083, () => {

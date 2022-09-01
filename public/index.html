@@ -5,56 +5,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script defer src="./app.js"></script>
+
     <title>Document</title>
   </head>
   <body>
     <header class="bg-gray-900 text-white p-4 text-4xl drop-shadow">
       <h1>Weather</h1>
     </header>
-    <main class="flex">
-      <div class="drop-shadow m-2 bg-gray-100 rounded overflow-hidden">
-        <h2 class="font-bold bg-red-800 text-white py-1 px-2">Current Weather</h2>
-        <div class="p-2">
-          <div class="flex">
-            <h3>Temp:&#160;</h3>
-            <span id="currentTemp"></span>
-            <span>&deg;</span>
+    <main class="">
+      <div class="flex">
+        <div class="drop-shadow m-2 bg-gray-100 rounded overflow-hidden w-1/6">
+          <h2 class="font-bold bg-red-800 text-white py-1 px-2">Current Weather</h2>
+          <div class="p-2">
+            <div class="flex">
+              <h3>Temp:&#160;</h3>
+              <span id="currentTemp"></span>
+              <span>&deg;</span>
+            </div>
+            <div class="flex">
+              <h3>Humidity:&#160;</h3>
+              <span id="currentHumidity"></span>
+              <span>%</span>
+            </div>
+            <div class="flex">
+              <h3>Pressue:&#160;</h3>
+              <span id="currentPressure"></span>
+              <span>mBar</span>
+            </div>
+            <div class="flex">
+              <h3>Wind speed:&#160;</h3>
+              <span id="currentWindSpeed"></span>
+              <span>mph @</span>
+              <span id="currentWindDeg"></span>
+              <span>&deg;</span>
+            </div>
+            <div class="flex">
+              <h3>Cloud Cover:&#160;</h3>
+              <span id="currentClouds"></span>
+              <span>%</span>
+            </div>
+            <div class="flex">
+              <h3>Sunrise:&#160;</h3>
+              <span id="currentSunrise"></span>
+            </div>
+            <div class="flex">
+              <h3>Sunset:&#160;</h3>
+              <span id="currentSunset"></span>
+            </div>
+            <div class="flex">
+              <h3>Visibility:&#160;</h3>
+              <span id="currentVisibility"></span>
+              <span>km</span>
+            </div>
           </div>
-          <div class="flex">
-            <h3>Humidity:&#160;</h3>
-            <span id="currentHumidity"></span>
-            <span>%</span>
+        </div>
+        <div class="drop-shadow m-2 bg-gray-100 rounded overflow-hidden w-1/6">
+          <h2 class="font-bold bg-red-800 text-white py-1 px-2">Home Weather - Coming Soon</h2>
+          <div class="p-2">
+            <div class="flex">
+              <h3>Temp:&#160;</h3>
+              <span id="currentTemp"></span>
+              <span>&deg;</span>
+            </div>
+            <div class="flex">
+              <h3>Humidity:&#160;</h3>
+              <span id="currentHumidity"></span>
+              <span>%</span>
+            </div>
+            <div class="flex">
+              <h3>Pressue:&#160;</h3>
+              <span id="currentPressure"></span>
+              <span>mBar</span>
+            </div>
           </div>
-          <div class="flex">
-            <h3>Pressue:&#160;</h3>
-            <span id="currentPressure"></span>
-            <span>mBar</span>
+        </div>
+      </div>
+      <div class="flex m-2 flex-col">
+        <h2 class="font-bold py-1 px-2">48 Hour Forecast</h2>
+        <div class="flex justify-center flex-col flex-wrap lg:flex-row">
+          <div class="w-full lg:w-1/2">
+            <canvas id="tempChart" class="w-full"></canvas>
           </div>
-          <div class="flex">
-            <h3>Wind speed:&#160;</h3>
-            <span id="currentWindSpeed"></span>
-            <span>mph @</span>
-            <span id="currentWindDeg"></span>
-            <span>&deg;</span>
+          <div class="w-full lg:w-1/2">
+            <canvas id="humiChart"></canvas>
           </div>
-          <div class="flex">
-            <h3>Cloud Cover:&#160;</h3>
-            <span id="currentClouds"></span>
-            <span>%</span>
+          <div class="w-full lg:w-1/2">
+            <canvas id="popChart"></canvas>
           </div>
-          <div class="flex">
-            <h3>Sunrise:&#160;</h3>
-            <span id="currentSunrise"></span>
-          </div>
-          <div class="flex">
-            <h3>Sunset:&#160;</h3>
-            <span id="currentSunset"></span>
-          </div>
-          <div class="flex">
-            <h3>Visibility:&#160;</h3>
-            <span id="currentVisibility"></span>
-            <span>km</span>
+          <div class="w-full lg:w-1/2">
+            <canvas id="cloudChart"></canvas>
           </div>
         </div>
       </div>
