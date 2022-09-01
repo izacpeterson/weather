@@ -1,4 +1,4 @@
-const isLive = false;
+const isLive = true;
 const url = isLive ? "/api" : "/test";
 console.log(url);
 
