@@ -47,6 +47,16 @@ app.get("/api/hourly", (req, res) => {
   });
 });
 
+app.get("/api/setHome", (req, res) => {
+  fs.writeFileSync("./home.json", JSON.stringify(req.query));
+  res.send("Home set");
+});
+app.get("/api/home", (req, res) => {
+  let home = JSON.parse(fs.readFileSync("./home.json"));
+  console.log(home);
+  res.send(JSON.stringify(home));
+});
+
 app.get("/test/current", (req, res) => {
   const data = fs.readFileSync("./data.json");
   res.send(JSON.parse(data).current);

@@ -1,4 +1,4 @@
-const isLive = true;
+const isLive = false;
 const url = isLive ? "/api" : "/test";
 console.log(url);
 
@@ -11,6 +11,12 @@ async function getData(url, callback) {
 function setValue(id, value) {
   document.getElementById(id).innerHTML = value;
 }
+
+getData("/api/home", (data) => {
+  console.log(data);
+  setValue("homeTemp", data.temp);
+  setValue("homeHumidity", data.humi);
+});
 
 navigator.geolocation.getCurrentPosition((positon) => {
   console.log(positon);
