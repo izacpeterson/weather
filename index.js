@@ -16,7 +16,7 @@ let apiKey = "35701ad524635b065706933439a9ab30";
 //     console.log(error);
 //   });
 
-app.use(express.static("public"));
+app.use(express.static("dashboard"));
 app.use("/dash", express.static("dashboard"));
 app.use(cors());
 
@@ -46,8 +46,7 @@ async function getDailyWeather(lat, lon, callback) {
   callback(response.data);
 }
 
-// getWeather({ lat: lat, lon: lon });
-
+//API
 app.get("/api/current", (req, res) => {
   getCurrentWeather(req.query.lat, req.query.lon, (data) => {
     res.send(data.current);
@@ -63,7 +62,6 @@ app.get("/api/daily", (req, res) => {
     res.send(data.daily);
   });
 });
-
 app.get("/api/setHome", (req, res) => {
   fs.writeFileSync("./home.json", JSON.stringify(req.query));
   res.send("Home set");
@@ -74,6 +72,7 @@ app.get("/api/home", (req, res) => {
   res.send(JSON.stringify(home));
 });
 
+//TEST API
 app.get("/test/current", (req, res) => {
   const data = fs.readFileSync("./data.json");
   res.send(JSON.parse(data).current);

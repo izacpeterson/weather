@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
     <script defer src="./app.js"></script>
     <title>Weather</title>
   </head>
@@ -26,6 +28,9 @@
     </section>
     <section>
       <ol id="forecast" class="flex"></ol>
+      <div class="w-full lg:w-full">
+        <canvas id="tempChart" class="w-full max-h-96"></canvas>
+      </div>
     </section>
   </body>
 </html>
