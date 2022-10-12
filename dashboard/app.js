@@ -16,10 +16,10 @@ function setData(id, data) {
 //Add a day forecast card
 function addDayCard(date, high, low, condition) {
   document.querySelector("#forecast").innerHTML += `
-  <div class="flex flex-col items-center text-3xl m-6 p-6 rounded-xl shadow-lg bg-slate-200 ">
+  <div class="flex flex-col items-center lg:text-3xl lg:m-6 lg:p-6 lg:rounded-xl lg:shadow-lg bg-slate-200 h-1/3 ">
     <div>${date}</div>
     <img src="http://openweathermap.org/img/wn/${condition}@4x.png"/>
-    <div>
+    <div class="flex flex-col justify-center items-center">
         <span>${high}&deg;</span> <span class="text-gray-500">${low}&deg;</span>
     </div>
   </div>

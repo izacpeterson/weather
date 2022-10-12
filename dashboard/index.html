@@ -10,12 +10,12 @@
     <script defer src="./app.js"></script>
     <title>Weather</title>
   </head>
-  <body class="h-screen flex">
-    <section id="current" class="w-1/4 bg-blue-400 h-full flex flex-col items-center shadow-lg">
+  <body class="h-screen flex flex-col lg:flex-row">
+    <section id="current" class="w-full lg:w-1/4 bg-blue-400 h-full flex flex-col items-center shadow-lg">
       <div class="pt-16 text-4xl">Good <span id="greeting">Day</span></div>
       <div id="dateTime"></div>
       <div id="img"></div>
-      <div class="py-16">
+      <div class="py-8 lg:py-16">
         <div class="text-8xl"><span id="currentTemp">68</span>&deg;</div>
         <div id="condition" class="text-4xl">Mostly Sunny</div>
       </div>
@@ -28,7 +28,7 @@
     </section>
     <section>
       <ol id="forecast" class="flex"></ol>
-      <div class="w-full lg:w-full">
+      <div class="w-full lg:w-full hidden lg:flex">
         <canvas id="tempChart" class="w-full max-h-96"></canvas>
       </div>
     </section>
