@@ -29,3 +29,7 @@
     </div>
   {/each}
 </div>
+
+<p class="text-xs fixed bottom-0">
+  API URL: http://127.0.0.1:5173/api/set?temp=?&humidity=?&location=?
+</p>
