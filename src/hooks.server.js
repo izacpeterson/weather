@@ -1,6 +1,4 @@
-import type { Handle } from "@sveltejs/kit";
-
-export const handle: Handle = async ({ resolve, event }) => {
+export const handle = async ({ resolve, event }) => {
   const response = await resolve(event);
 
   // Apply CORS header for API routes
