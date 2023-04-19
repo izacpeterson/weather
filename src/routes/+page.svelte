@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { dataset_dev } from "svelte/internal";
 
   let alerts = [];
   let coords = {};
@@ -85,21 +86,34 @@
       <h2>Daily Forecast</h2>
       <div class="flex flex-col">
         {#each daily as day}
-          <div class="flex items-center justify-evenly">
-            <span>{new Date(parseInt(String(day.dt) + "000")).toLocaleDateString()}</span>
-            <img src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`} />
-            <span>High: {Math.round(day.temp.max)}&deg;</span>
-            <span>Low: {Math.round(day.temp.min)}&deg;</span>
-            <!-- <span>{day.weather[0].main}</span> -->
+          <div class="collapse">
+            <input type="checkbox" />
+            <!-- <div class="collapse-title text-xl font-medium">Click me to show/hide content</div> -->
+            <div class="flex items-center justify-evenly collapse-title !p-0 !m-0 !min-h-0 !h-auto">
+              <span>{new Date(parseInt(String(day.dt) + "000")).toLocaleDateString()}</span>
+              <img src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`} />
+              <span>High: {Math.round(day.temp.max)}&deg;</span>
+              <span>Low: {Math.round(day.temp.min)}&deg;</span>
+              <!-- <span>{day.weather[0].main}</span> -->
+            </div>
+            <div class="collapse-content px-8 flex flex-col">
+              <span>Chance of precipitation: {day.pop * 100}%</span>
+              <span>Humidity: {day.humidity}%</span>
+              <span>Cloud Coverage: {day.clouds}%</span>
+              <span>Sunrise: {new Date(parseInt(String(day.sunrise) + "000")).toLocaleTimeString()}</span>
+              <span>Sunset: {new Date(parseInt(String(day.sunset) + "000")).toLocaleTimeString()}</span>
+              <span>Moonrise: {new Date(parseInt(String(day.moonrise) + "000")).toLocaleTimeString()}</span>
+              <span>Moonset: {new Date(parseInt(String(day.moonset) + "000")).toLocaleTimeString()}</span>
+            </div>
           </div>
         {/each}
       </div>
     </section>
   </main>
 
-  <!-- <pre>
+  <pre>
     {JSON.stringify(daily[0], null, 2)}
-</pre> -->
+</pre>
 {:else}
   <div class="flex flex-col items-center">
     <h2 class="text-2xl">Loading...</h2>
