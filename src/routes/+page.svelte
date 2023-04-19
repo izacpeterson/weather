@@ -111,9 +111,9 @@
     </section>
   </main>
 
-  <pre>
+  <!-- <pre>
     {JSON.stringify(daily[0], null, 2)}
-</pre>
+</pre> -->
 {:else}
   <div class="flex flex-col items-center">
     <h2 class="text-2xl">Loading...</h2>
