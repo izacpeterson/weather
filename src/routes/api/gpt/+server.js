@@ -1,7 +1,7 @@
 import { getWeather } from "$lib/weather";
 import { json } from "@sveltejs/kit";
 import { OpenAI } from "openai";
-import { OPENAI_KEY } from "$env/static/private";
+import { OPENAI_KEY } from "$env/static/public";
 
 console.log(OPENAI_KEY);
 
