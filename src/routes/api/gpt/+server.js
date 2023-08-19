@@ -1,9 +1,7 @@
 import { getWeather } from "$lib/weather";
 import { json } from "@sveltejs/kit";
 import { OpenAI } from "openai";
-import { OPENAI_KEY } from "$env/static/public";
-
-console.log(OPENAI_KEY);
+// import { OPENAI_KEY } from "$env/static/public";
 
 async function getChatGPT(coords) {
   let weather = await getWeather(coords);
@@ -17,7 +15,7 @@ async function getChatGPT(coords) {
   ];
 
   const openai = new OpenAI({
-    apiKey: OPENAI_KEY,
+    apiKey: process.env.OPENAI_API_KEY,
   });
 
   const chatCompletion = await openai.chat.completions.create({
