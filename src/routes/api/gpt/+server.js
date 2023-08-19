@@ -1,6 +1,6 @@
 import { getWeather } from "$lib/weather";
 import { json } from "@sveltejs/kit";
-import { Configuration, OpenAIApi } from "openai";
+import { OpenAI } from "openai";
 
 async function getChatGPT(coords) {
   let weather = await getWeather(coords);
@@ -8,33 +8,38 @@ async function getChatGPT(coords) {
   // trim weather to the next 24hours from weather.hourly
   weather = JSON.stringify(weather.hourly.slice(0, 24));
   const messages = [
-    { role: "system", content: `Write out a forcast given the provided data. Do not include an intro such as "The weather object provided" ${weather}` },
-    // { role: "user", content: "message here" },
+    { role: "system", content: `Write out short a forcast given the provided data. Do not include an intro such as "The weather object provided"` },
+    { role: "user", content: `${weather}` },
     // { role: "assistant", content: "ChatGPT response here..." },
   ];
-  console.log(messages);
-  const configuration = new Configuration({
-    apiKey: "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",
+
+  const openai = new OpenAI({
+    apiKey: "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",
   });
-  const openai = new OpenAIApi(configuration);
 
-  // adfsds
-
-  const completion = await openai.createChatCompletion({
+  const chatCompletion = await openai.chat.completions.create({
     model: "gpt-4",
-    messages: [{ role: "user", content: "Hello world" }],
+    messages: messages,
   });
-  console.log(completion.data.choices[0].message);
 
-  console.log(chatGPTMessage);
+  console.log(chatCompletion.choices[0].message);
+
+  const chatGPTMessage = chatCompletion.choices[0].message;
+  // const chatGPT = await openai.createChatCompletion({
+  //   model: "gpt-4",
+  //   messages,
+  // });
+  // const chatGPTMessage = chatGPT.data.choices[0].message;
+  // console.log(chatGPTMessage);
   return chatGPTMessage;
 }
 
-export function GET({ url }) {
+export async function GET({ url }) {
   let lat = url.searchParams.get("lat");
   let lng = url.searchParams.get("lng");
+  console.log(lat, lng);
 
-  getChatGPT({ lat: lat, lng: lng });
+  let weatherMessage = await getChatGPT({ lat: lat, lng: lng });
 
-  return json({});
+  return json({ weatherMessage, headers: { "Access-Control-Allow-Origin": "*" } });
 }
