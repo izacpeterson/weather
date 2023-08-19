@@ -9,7 +9,7 @@ async function getChatGPT(coords) {
   // trim weather to the next 24hours from weather.hourly
   weather = JSON.stringify(weather.hourly.slice(0, 24));
   const messages = [
-    { role: "system", content: `Write out very short a forcast given the provided data. Do not include an intro such as "The weather object provided"` },
+    { role: "system", content: `Write out very short a forcast given the provided data. Do not include an intro such as "The weather object provided". Do not include acronyms. F will be Farenheight and mph will be Miles Per Hour` },
     { role: "user", content: `${weather}` },
     // { role: "assistant", content: "ChatGPT response here..." },
   ];
